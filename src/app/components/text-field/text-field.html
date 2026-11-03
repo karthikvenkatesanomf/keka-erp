@@ -1,0 +1,45 @@
+<div class="form-field">
+  @if (label) {
+    <label [for]="id">{{ label }}</label>
+  }
+
+  <div class="input-wrapper">
+    @if (isTextArea) {
+      <textarea
+        [id]="id"
+        [formControl]="control"
+        [placeholder]="placeholder"
+        [attr.aria-invalid]="control.invalid && control.touched"
+        [attr.aria-describedby]="(control.invalid && control.touched && errorMessage) ? id + '-error' : null"
+        (input)="onInput($event)"
+      ></textarea>
+    } @else {
+      <input
+        [id]="id"
+        [type]="inputType"
+        [class.has-toggle]="isPassword"
+        [formControl]="control"
+        [placeholder]="placeholder"
+        [attr.aria-invalid]="control.invalid && control.touched"
+        [attr.aria-describedby]="(control.invalid && control.touched && errorMessage) ? id + '-error' : null"
+        (input)="onInput($event)"
+      />
+
+      @if (isPassword) {
+        <app-button
+          class="pwd-button"
+          [name]="showPassword() ? 'Hide' : 'Show'"
+          [variant]="'text'"
+          [size]="'sm'"
+          (clicked)="togglePassword()"
+        />
+      }
+    }
+  </div>
+
+  @if (control.invalid && control.touched && errorMessage) {
+    <p [id]="id + '-error'" class="field-error">
+      {{ errorMessage }}
+    </p>
+  }
+</div>

@@ -1,0 +1,41 @@
+<div class="login">
+  <section class="login-card">
+    <div class="login-header">
+      <app-keka-icon />
+      <h1>Welcome</h1>
+      <p>Sign in to manage your team and tasks.</p>
+    </div>
+
+    @if (errorMessage()) {
+      <div class="alert" role="alert" aria-live="assertive">{{ errorMessage() }}</div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <app-text-field
+        [control]="form.controls.email"
+        [id]="'email'"
+        [label]="'Email'"
+        [type]="'email'"
+        [placeholder]="'Your email'"
+        [errorMessage]="getError('email')"
+      />
+
+      <app-text-field
+        [control]="form.controls.password"
+        [id]="'password'"
+        [label]="'Password'"
+        [type]="'password'"
+        [placeholder]="'Your password'"
+        [errorMessage]="getError('password')"
+      />
+
+      <app-button
+        [name]="submitting() ? 'Signing in...' : 'Sign in'"
+        [type]="'submit'"
+        [variant]="'primary'"
+        [disabled]="form.invalid || submitting()"
+        [fullWidth]="true"
+      />
+    </form>
+  </section>
+</div>

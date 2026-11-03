@@ -1,0 +1,9 @@
+<button
+  class="btn btn--{{ variant }} btn--{{ size }}"
+  [class.btn--block]="fullWidth"
+  [type]="type"
+  [disabled]="disabled"
+  (click)="clicked.emit()"
+>
+  {{ name }}
+</button>

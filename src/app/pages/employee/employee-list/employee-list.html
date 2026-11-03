@@ -1,0 +1,55 @@
+<div class="employee-container">
+  <div class="employee-header">
+    <h1>Employees</h1>
+    <app-button
+      name="+ Create Employee"
+      variant="primary"
+      (clicked)="navigateToCreate()"
+    />
+  </div>
+
+  <app-loading-overlay
+    [text]="'Loading employee details...'"
+    [isEnabled]="isNavigating()"
+  />
+
+  @if (isLoading()) {
+    <div class="loading" role="alert" aria-live="assertive">
+      <p>Loading employees...</p>
+    </div>
+  }
+
+  @if (error()) {
+    <div class="alert error" role="alert" aria-live="assertive">
+      <p>{{ error() }}</p>
+      <app-button
+        name="Retry"
+        variant="primary"
+        size="sm"
+        (clicked)="loadEmployees()"
+      />
+    </div>
+  }
+
+  @if (!isLoading() && !error()) {
+    @if (employees().length > 0) {
+      <div class="table-wrapper">
+        <app-table
+          [columns]="columns"
+          [data]="employees()"
+          [striped]="false"
+          [hoverable]="true"
+          [bordered]="true"
+          (rowClick)="onRowClick($event)"
+        />
+      </div>
+      <div class="actions-footer">
+        <p class="employee-count">Total Employees: {{ employees().length }}</p>
+      </div>
+    } @else {
+      <div class="no-data">
+        <p>No employees found. Create one to get started!</p>
+      </div>
+    }
+  }
+</div>

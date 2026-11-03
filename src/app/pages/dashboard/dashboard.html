@@ -1,0 +1,131 @@
+<div class="dashboard">
+  <header class="dashboard-header">
+    <h1>Dashboard</h1>
+  </header>
+
+  @if (isLoading()) {
+    <div class="loading">
+      <p>Loading dashboard data...</p>
+    </div>
+  } @else {
+    <div class="metrics-section">
+      <app-metrics-card
+        [label]="'Total Employees'"
+        [count]="totalEmployees()"
+        status="total"
+      />
+      <app-metrics-card
+        [label]="'Active Employees'"
+        [count]="activeEmployees()"
+        status="active"
+      />
+      <app-metrics-card
+        [label]="'Total Tasks'"
+        [count]="totalTasks()"
+        status="total"
+      />
+      <app-metrics-card
+        [label]="'Pending Tasks'"
+        [count]="pendingTasks()"
+        status="pending"
+      />
+      <app-metrics-card
+        [label]="'In Progress'"
+        [count]="inProgressTasks()"
+        status="inprogress"
+      />
+    </div>
+
+    <div class="cards-section">
+      <div class="card task-distribution-card">
+        <div class="card-header">
+          <h3>Task Progress</h3>
+          <span class="total-tasks">{{ taskDistribution().total }} tasks</span>
+        </div>
+        <div class="card-body">
+          <div class="progress-container">
+            <app-progress-item
+              [label]="'Completed'"
+              [count]="taskDistribution().completed"
+              [percent]="taskDistribution().completedPercent"
+              status="completed"
+            />
+            <app-progress-item
+              [label]="'In Progress'"
+              [count]="taskDistribution().inProgress"
+              [percent]="taskDistribution().inProgressPercent"
+              status="inprogress"
+            />
+            <app-progress-item
+              [label]="'Pending'"
+              [count]="taskDistribution().pending"
+              [percent]="taskDistribution().pendingPercent"
+              status="pending"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="card recent-employees-card">
+        <div class="card-header">
+          <h3>Recent Employees</h3>
+          <span class="total-count">{{ recentEmployees().length }}</span>
+        </div>
+        <div class="card-body">
+          @if (recentEmployees().length > 0) {
+            <div class="employees-list">
+              @for (employee of recentEmployees(); track employee.id) {
+                <div class="employee-item">
+                  <div class="employee-info">
+                    <div class="employee-name">{{ employee.displayName }}</div>
+                    <div class="employee-role">{{ employee.role }}</div>
+                  </div>
+                  <div class="employee-status">
+                    <span [class]="'status-badge ' + employee.status.toLowerCase()">
+                      {{ employee.status }}
+                    </span>
+                  </div>
+                </div>
+              }
+            </div>
+          } @else {
+            <div class="no-employees">
+              <p>No employees found</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="upcoming-deadlines-section">
+      <h2>Upcoming Deadlines (Next 30 Days)</h2>
+      @if (upcomingDeadlines().length > 0) {
+        <div class="deadlines-list">
+          @for (deadline of upcomingDeadlines(); track deadline.taskId) {
+            <div class="deadline-item" [class.urgent]="deadline.daysUntilDue <= 3">
+              <div class="deadline-content">
+                <div class="deadline-title">{{ deadline.taskTitle }}</div>
+                <div class="deadline-meta">
+                  <span class="priority" [class]="'priority-' + deadline.priority.toLowerCase()">
+                    {{ deadline.priority }}
+                  </span>
+                  <span class="due-date">
+                    {{ deadline.dueDate | date: 'MMM dd, yyyy' }}
+                  </span>
+                </div>
+              </div>
+              <div class="days-badge" [class.critical]="deadline.daysUntilDue <= 3">
+                <span class="days-number">{{ deadline.daysUntilDue }}</span>
+                <span class="days-label">{{ deadline.daysUntilDue === 1 ? 'day' : 'days' }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="no-deadlines">
+          <p>No upcoming deadlines in the next 30 days</p>
+        </div>
+      }
+    </div>
+  }
+</div>

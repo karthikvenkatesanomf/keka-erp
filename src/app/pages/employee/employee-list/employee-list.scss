@@ -1,0 +1,73 @@
+.employee-container {
+  padding: 1.25rem;
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+.employee-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.875rem;
+
+  h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+}
+
+.alert {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid;
+  border-radius: 0.375rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+
+  &.error {
+    background: #fef2f2;
+    border-color: #b91c1c;
+    color: #b91c1c;
+  }
+}
+
+.loading {
+  padding: 1.25rem;
+  text-align: center;
+  border-radius: 0.375rem;
+  margin: 1.25rem 0;
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.no-data {
+  padding: 1.25rem;
+  text-align: center;
+  border-radius: 0.375rem;
+  margin: 1.25rem 0;
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.table-wrapper {
+  margin-bottom: 1.25rem;
+}
+
+.actions-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-top: 1px solid #ddd;
+}
+
+.employee-count {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #666;
+  font-weight: 500;
+}

@@ -1,0 +1,7 @@
+<div [ngClass]="'card card-' + status">
+  <div class="card-header">
+    <h3 class="card-title">{{ label }}</h3>
+    <span [ngClass]="'badge badge-' + status">{{ status }}</span>
+  </div>
+  <div class="card-number">{{ count }}</div>
+</div>

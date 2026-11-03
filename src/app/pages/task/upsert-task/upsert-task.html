@@ -1,0 +1,97 @@
+<div class="upsert-task">
+  <div class="upsert-task-card">
+    <div class="upsert-task-header">
+      <h1>{{ pageTitle() }}</h1>
+      <app-button
+        name="← Back"
+        variant="secondary"
+        (clicked)="goBack()"
+      />
+    </div>
+
+    @if (submitError()) {
+      <div class="alert" role="alert">{{ submitError() }}</div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="form-row">
+        <app-text-field
+          [control]="form.controls.title"
+          [id]="'title'"
+          [label]="'Title'"
+          [type]="'text'"
+          [placeholder]="'Enter task title'"
+          [errorMessage]="getError('title')"
+        />
+      </div>
+
+      <div class="form-row">
+        <app-dropdown
+          [control]="form.controls.priority"
+          [id]="'priority'"
+          [label]="'Priority'"
+          [placeholder]="'Select priority'"
+          [options]="priorityOptions"
+          [errorMessage]="getError('priority')"
+        />
+
+         <app-text-field
+          [control]="form.controls.dueDate"
+          [id]="'dueDate'"
+          [label]="'Due Date'"
+          [type]="'date'"
+          [placeholder]="'Select due date'"
+          [errorMessage]="getError('dueDate')"
+        />
+      </div>
+
+      <div class="form-row">
+        <app-dropdown
+          [control]="form.controls.assignedTo"
+          [id]="'assignedTo'"
+          [label]="'Assigned To'"
+          [placeholder]="'Select employee'"
+          [options]="employeeOptions()"
+          [errorMessage]="getError('assignedTo')"
+          [disabled]="loadingEmployees()"
+        />
+
+        <app-dropdown
+          [control]="form.controls.status"
+          [id]="'status'"
+          [label]="'Status'"
+          [placeholder]="'Select status'"
+          [options]="statusOptions"
+          [errorMessage]="getError('status')"
+        />
+      </div>
+
+      <div class="form-row">
+        <app-text-field
+          [control]="form.controls.description"
+          [isTextArea]="true"
+          [id]="'description'"
+          [label]="'Description'"
+          [type]="'text'"
+          [placeholder]="'Enter task description'"
+          [errorMessage]="getError('description')"
+        />
+      </div>
+
+      <div class="form-actions">
+        <app-button
+          [name]="submitButtonLabel()"
+          [type]="'submit'"
+          [variant]="'primary'"
+          [fullWidth]="true"
+        />
+        <app-button
+          [name]="'Cancel'"
+          [variant]="'secondary'"
+          (clicked)="goBack()"
+          [fullWidth]="true"
+        />
+      </div>
+    </form>
+  </div>
+</div>

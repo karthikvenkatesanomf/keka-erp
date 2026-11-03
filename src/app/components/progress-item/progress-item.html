@@ -1,0 +1,16 @@
+<div class="progress-item">
+  <div class="progress-info">
+    <span class="status-label" [class]="status">{{ label }}</span>
+    <span class="status-count">{{ count }}</span>
+  </div>
+  <div class="progress-bar-wrapper">
+    <div class="progress-bar">
+      <div
+        class="progress-fill"
+        [class]="status"
+        [style.width.%]="percent"
+      ></div>
+    </div>
+  </div>
+  <span class="status-percent">{{ percent }}%</span>
+</div>

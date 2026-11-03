@@ -1,0 +1,55 @@
+<div class="task-container">
+  <div class="task-header">
+    <h1>Tasks</h1>
+    <app-button
+      name="+ Create Task"
+      variant="primary"
+      (clicked)="navigateToCreate()"
+    />
+  </div>
+
+  <app-loading-overlay
+    [text]="'Loading task details...'"
+    [isEnabled]="isNavigating()"
+  />
+
+  @if (isLoading()) {
+    <div class="loading">
+      <p>Loading tasks...</p>
+    </div>
+  }
+
+  @if (error()) {
+    <div class="alert error">
+      <p>{{ error() }}</p>
+      <app-button
+        name="Retry"
+        variant="primary"
+        size="sm"
+        (clicked)="loadTasks()"
+      />
+    </div>
+  }
+
+  @if (!isLoading() && !error()) {
+    @if (displayTasks().length > 0) {
+      <div class="table-wrapper">
+        <app-table
+          [columns]="columns"
+          [data]="displayTasks()"
+          [striped]="false"
+          [hoverable]="true"
+          [bordered]="true"
+          (rowClick)="onRowClick($event)"
+        />
+      </div>
+      <div class="actions-footer">
+        <p class="task-count">Total Tasks: {{ displayTasks().length }}</p>
+      </div>
+    } @else {
+      <div class="no-data">
+        <p>No tasks found. Create one to get started!</p>
+      </div>
+    }
+  }
+</div>

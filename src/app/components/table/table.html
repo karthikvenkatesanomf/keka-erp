@@ -1,0 +1,78 @@
+<div class="table-container">
+  <table
+    class="table"
+    [class.table--striped]="striped"
+    [class.table--bordered]="bordered"
+    role="table"
+  >
+    <thead class="table-header">
+      <tr class="table-header-row" role="row">
+        @for (column of columns; track column.key) {
+          <th
+            class="table-header-cell"
+            [style.width]="getColumnWidth(column)"
+            [class.table-header-cell--sortable]="isSortable(column.key)"
+            [class.table-header-cell--sorted]="sortColumn() === column.key"
+            (click)="onSort(column.key)"
+            [attr.aria-sort]="
+              sortColumn() === column.key
+                ? sortDirection() === 'asc'
+                  ? 'ascending'
+                  : 'descending'
+                : 'none'
+            "
+            role="columnheader"
+          >
+            <div class="header-content">
+              <span class="header-label">{{ column.label }}</span>
+              @if (isSortable(column.key)) {
+                <span class="sort-icon" aria-hidden="true">{{ getSortIcon(column.key) }}</span>
+              }
+            </div>
+          </th>
+        }
+      </tr>
+
+      <tr class="table-filter-row" role="row">
+        @for (column of columns; track column.key) {
+          <td class="table-filter-cell" [style.width]="getColumnWidth(column)" role="cell">
+            @if (column.filterable !== false) {
+              <app-text-field
+                [control]="getFilterControl(column.key)"
+                [placeholder]="'Filter ' + column.label"
+                (valueChange)="onFilterChange(column.key, $event)"
+              />
+            }
+          </td>
+        }
+      </tr>
+    </thead>
+
+    <tbody class="table-body">
+      @if (getFilteredAndSortedData().length > 0) {
+        @for (row of getFilteredAndSortedData(); let rowIndex = $index; track rowIndex) {
+          <tr
+            class="table-body-row"
+            [class.table-body-row--hoverable]="hoverable"
+            (click)="onRowClick(row)"
+            [style.height]="rowHeight"
+            role="row"
+            tabindex="0"
+          >
+            @for (column of columns; track column.key) {
+              <td class="table-body-cell" [style.width]="getColumnWidth(column)" role="cell">
+                {{ getCellValue(row, column) }}
+              </td>
+            }
+          </tr>
+        }
+      } @else {
+        <tr class="table-empty-row" role="row">
+          <td [attr.colspan]="columns.length" class="table-empty-cell" role="cell">
+            <p class="empty-message">No data available</p>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

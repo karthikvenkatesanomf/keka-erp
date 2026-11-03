@@ -1,0 +1,125 @@
+<div class="upsert-employee">
+  <div class="upsert-employee-card">
+    <div class="upsert-employee-header">
+      <h1>{{ pageTitle() }}</h1>
+      <app-button
+        name="← Back"
+        variant="secondary"
+        (clicked)="goBack()"
+      />
+    </div>
+
+    @if (submitError()) {
+      <div class="alert" role="alert">{{ submitError() }}</div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="form-row">
+        <app-text-field
+          [control]="form.controls.name"
+          [id]="'name'"
+          [label]="'Name'"
+          [type]="'text'"
+          [placeholder]="'Enter employee name'"
+          [errorMessage]="getError('name')"
+        />
+
+        <app-text-field
+          [control]="form.controls.email"
+          [id]="'email'"
+          [label]="'Email'"
+          [type]="'email'"
+          [placeholder]="'Enter email address'"
+          [errorMessage]="getError('email')"
+        />
+      </div>
+
+      <div class="form-row">
+        <app-text-field
+          [control]="form.controls.phone"
+          [id]="'phone'"
+          [label]="'Phone'"
+          [type]="'text'"
+          [placeholder]="'Enter phone number (10 digits)'"
+          [errorMessage]="getError('phone')"
+        />
+
+        <app-dropdown
+          [control]="form.controls.department"
+          [id]="'department'"
+          [label]="'Department'"
+          [placeholder]="'Select department'"
+          [options]="departmentOptions"
+          [errorMessage]="getError('department')"
+        />
+      </div>
+
+      <div class="form-row">
+        <app-dropdown
+          [control]="form.controls.role"
+          [id]="'role'"
+          [label]="'Role'"
+          [placeholder]="'Select role'"
+          [options]="roleOptions()"
+          [errorMessage]="getError('role')"
+        />
+
+        <app-dropdown
+          [control]="form.controls.status"
+          [id]="'status'"
+          [label]="'Status'"
+          [placeholder]="'Select status'"
+          [options]="statusOptions"
+          [errorMessage]="getError('status')"
+        />
+      </div>
+
+      <div class="form-row">
+        <app-text-field
+          [control]="form.controls.joiningDate"
+          [id]="'joiningDate'"
+          [label]="'Joining Date'"
+          [type]="'date'"
+          [placeholder]="'Select joining date'"
+          [errorMessage]="getError('joiningDate')"
+        />
+
+        <app-text-field
+          [control]="form.controls.branch"
+          [id]="'branch'"
+          [label]="'Branch'"
+          [type]="'text'"
+          [placeholder]="'Enter branch'"
+          [errorMessage]="getError('branch')"
+        />
+      </div>
+
+      <div class="form-row">
+        <app-text-field
+          [control]="form.controls.address"
+          [isTextArea]="true"
+          [id]="'address'"
+          [label]="'Address'"
+          [type]="'text'"
+          [placeholder]="'Enter address'"
+          [errorMessage]="getError('address')"
+        />
+      </div>
+
+      <div class="form-actions">
+        <app-button
+          [name]="submitButtonLabel()"
+          [type]="'submit'"
+          [variant]="'primary'"
+          [fullWidth]="true"
+        />
+        <app-button
+          [name]="'Cancel'"
+          [variant]="'secondary'"
+          (clicked)="goBack()"
+          [fullWidth]="true"
+        />
+      </div>
+    </form>
+  </div>
+</div>
