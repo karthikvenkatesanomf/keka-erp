@@ -35,31 +35,29 @@ screenshots/            Project screenshots
 
 ## Screenshots
 
-Screenshots are stored in [`screenshots/`](./screenshots/). They are scaled below for readability; open the files directly for full resolution.
-
 ### Login
 
-<img src="./screenshots/login.png" alt="Keka ERP login screen" width="900" />
+<img width="900" alt="./screenshots/login.png" src="https://github.com/user-attachments/assets/5656d12a-c2af-4a90-bef3-00ab916081ff" />
 
 ### Dashboard
 
-<img src="./screenshots/dashboard.png" alt="Keka ERP dashboard" width="900" />
+<img width="900" alt="./screenshots/dashboard.png" src="https://github.com/user-attachments/assets/30fc03d6-afde-4dc2-8847-2c30a8cd3c02" />
 
 ### Employee List
 
-<img src="./screenshots/employee-list.png" alt="Employee list" width="900" />
+<img width="900" alt="./screenshots/employee-list.png" src="https://github.com/user-attachments/assets/00a36c28-b022-4506-9aa1-7481ac067b28" />
 
 ### Create Employee
 
-<img src="./screenshots/employee-create.png" alt="Create employee form" width="900" />
+<img width="900" alt="./screenshots/employee-create.png" src="https://github.com/user-attachments/assets/1c8d9073-400a-4cd9-82e2-08ceead7d9f8" />
 
 ### Task List
 
-<img src="./screenshots/task.png" alt="Task list" width="900" />
+<img width="900" alt="./screenshots/task.png" src="https://github.com/user-attachments/assets/55e9bffa-6aa1-48f8-ae7e-fc4df7e3452b" />
 
 ### Create Task
 
-<img src="./screenshots/task-create.png" alt="Create task form" width="900" />
+<img width="900" alt="./screenshots/task-create.png" src="https://github.com/user-attachments/assets/a31edcad-cb48-4f31-a986-dc47980efb12" />
 
 ## Firebase Implementation
 
