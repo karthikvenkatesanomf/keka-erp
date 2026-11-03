@@ -30,34 +30,33 @@ src/
 		validators/        Form validators
 	environments/        Firebase environment configuration
 public/                Static assets
-screenshots/            Project screenshots
 ```
 
 ## Screenshots
 
 ### Login
 
-<img width="900" alt="./screenshots/login.png" src="https://github.com/user-attachments/assets/5656d12a-c2af-4a90-bef3-00ab916081ff" />
+<img width="900" alt="Keka ERP login screen" src="https://github.com/user-attachments/assets/5656d12a-c2af-4a90-bef3-00ab916081ff" />
 
 ### Dashboard
 
-<img width="900" alt="./screenshots/dashboard.png" src="https://github.com/user-attachments/assets/30fc03d6-afde-4dc2-8847-2c30a8cd3c02" />
+<img width="900" alt="Keka ERP dashboard" src="https://github.com/user-attachments/assets/30fc03d6-afde-4dc2-8847-2c30a8cd3c02" />
 
 ### Employee List
 
-<img width="900" alt="./screenshots/employee-list.png" src="https://github.com/user-attachments/assets/00a36c28-b022-4506-9aa1-7481ac067b28" />
+<img width="900" alt="Employee list" src="https://github.com/user-attachments/assets/00a36c28-b022-4506-9aa1-7481ac067b28" />
 
 ### Create Employee
 
-<img width="900" alt="./screenshots/employee-create.png" src="https://github.com/user-attachments/assets/1c8d9073-400a-4cd9-82e2-08ceead7d9f8" />
+<img width="900" alt="Create employee form" src="https://github.com/user-attachments/assets/1c8d9073-400a-4cd9-82e2-08ceead7d9f8" />
 
 ### Task List
 
-<img width="900" alt="./screenshots/task.png" src="https://github.com/user-attachments/assets/55e9bffa-6aa1-48f8-ae7e-fc4df7e3452b" />
+<img width="900" alt="Task list" src="https://github.com/user-attachments/assets/55e9bffa-6aa1-48f8-ae7e-fc4df7e3452b" />
 
 ### Create Task
 
-<img width="900" alt="./screenshots/task-create.png" src="https://github.com/user-attachments/assets/a31edcad-cb48-4f31-a986-dc47980efb12" />
+<img width="900" alt="Create task form" src="https://github.com/user-attachments/assets/a31edcad-cb48-4f31-a986-dc47980efb12" />
 
 ## Firebase Implementation
 
