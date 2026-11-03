@@ -35,29 +35,31 @@ screenshots/            Project screenshots
 
 ## Screenshots
 
+Screenshots are stored in [`screenshots/`](./screenshots/). They are scaled below for readability; open the files directly for full resolution.
+
 ### Login
 
-![Keka ERP login screen](screenshots/login.png)
+<img src="./screenshots/login.png" alt="Keka ERP login screen" width="900" />
 
 ### Dashboard
 
-![Keka ERP dashboard](screenshots/dashboard.png)
+<img src="./screenshots/dashboard.png" alt="Keka ERP dashboard" width="900" />
 
 ### Employee List
 
-![Employee list](screenshots/employee-list.png)
+<img src="./screenshots/employee-list.png" alt="Employee list" width="900" />
 
 ### Create Employee
 
-![Create employee form](screenshots/employee-create.png)
+<img src="./screenshots/employee-create.png" alt="Create employee form" width="900" />
 
 ### Task List
 
-![Task list](screenshots/task.png)
+<img src="./screenshots/task.png" alt="Task list" width="900" />
 
 ### Create Task
 
-![Create task form](screenshots/task-create.png)
+<img src="./screenshots/task-create.png" alt="Create task form" width="900" />
 
 ## Firebase Implementation
 
